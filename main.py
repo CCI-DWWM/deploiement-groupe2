@@ -9,7 +9,7 @@ templates = Jinja2Templates(directory="templates")
 @app.get("/", description="mqtt messages")
 def read_root(request: Request):
   client, database, collection = get_connection()
-  docs = collection.find({"end_device_ids.device_id":"bridge-chaumont"})
+  docs = collection.find({"end_device_ids.device_id":"bridge-chaumont"}).sort("received_at", -1)
 
   # Transformer en liste de dicts simples
   mesures = [ ]
