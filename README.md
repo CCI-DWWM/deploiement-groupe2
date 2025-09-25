@@ -17,7 +17,7 @@ Application de récupération et d’affichage de données capteurs via MQTT + s
 
 ```bash
 git clone https://github.com/CCI-DWWM/deploiement-groupe2.git
-cd mqtt-tg
+cd deploiement-groupe2
 ```
 
 ### 2. Créer et activer un environnement virtuel
