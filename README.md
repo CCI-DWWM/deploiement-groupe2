@@ -16,7 +16,7 @@ Application de récupération et d’affichage de données capteurs via MQTT + s
 ### 1. Cloner le dépôt
 
 ```bash
-git clone https://github.com/votre-utilisateur/mqtt-tg.git
+git clone https://github.com/CCI-DWWM/deploiement-groupe2.git
 cd mqtt-tg
 ```
 
