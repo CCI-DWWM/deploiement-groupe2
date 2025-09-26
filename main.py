@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
 
 from database import get_connection
+from sendEmail import sendEmail
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
@@ -10,6 +11,7 @@ templates = Jinja2Templates(directory="templates")
 def read_root(request: Request):
   client, database, collection = get_connection()
   docs = collection.find({"end_device_ids.device_id":"bridge-chaumont"}).sort("received_at", -1)
+
 
   # Transformer en liste de dicts simples
   mesures = [ ]

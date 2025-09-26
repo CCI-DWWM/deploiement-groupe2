@@ -4,6 +4,7 @@ import os
 from dotenv import load_dotenv
 from webhook import send_msg_discord
 from database import get_connection
+from sendEmail import sendEmail
 
 load_dotenv()
 
@@ -17,12 +18,19 @@ def on_connect(client, userdata, flags, reason_code, properties):
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
   client, database, collection = get_connection()
-
-  print( msg.topic + " " + str( msg.payload ) )
+  
 
   # Décodage JSON
   data = json.loads( msg.payload.decode( "utf-8" ) )
+  print( msg.topic + " " + data.get('end_device_ids').get('device_id') + " " + str( data.get('uplink_message').get('decoded_payload', {}).get('haut') ) )
   #decoded = data[ "uplink_message" ][ "decoded_payload" ]
+  deviceId = data.get('end_device_ids').get('device_id')
+  hauteur = data.get('uplink_message').get('decoded_payload', {}).get('haut')
+  if type(hauteur) in [int, str]:
+    hauteur = float(hauteur)
+    if deviceId == 'bridge-chaumont' and hauteur > 2:
+      sendEmail()
+
 
   # Enregistrement dans la collection MongoDB
   result = collection.insert_one(data)
