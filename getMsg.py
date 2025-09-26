@@ -52,4 +52,4 @@ mqttc.connect(os.getenv('MQTT_HOST'), 1883, 60)
 # handles reconnecting.
 # Other loop*() functions are available that give a threaded interface and a
 # manual interface.
-mqttc.loop_forever()
+mqttc.loop_start()
