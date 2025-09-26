@@ -5,6 +5,9 @@ from dotenv import load_dotenv
 from webhook import send_msg_discord
 from database import get_connection
 from sendEmail import sendEmail
+import struct
+import base64
+
 
 load_dotenv()
 
@@ -31,6 +34,23 @@ def on_message(client, userdata, msg):
     if deviceId == 'bridge-chaumont' and hauteur > 2:
       sendEmail()
 
+  # Print du VS113
+  if deviceId == 'vs133-1': 
+    frmPayload = data.get('uplink_message').get('frm_payload', {})
+    frmPayloadB64 = base64.b64decode(frmPayload)
+    frmPayloadHex = frmPayloadB64.hex()
+    (_,_,total_in,_,_,total_out,_,_,period) = struct.unpack('<BBIBBIBBI', frmPayloadB64)
+    decoded_payload={'total_in':total_in, 'total_out':total_out, 'period': period}
+    print(decoded_payload)
+    data[ "uplink_message" ]["decoded_payload"] = decoded_payload
+  #   test = data[ "uplink_message" ].append(decoded_payload)
+  #   result = collection.insert_one(test)
+  # else:
+  #   result = collection.insert_one(data)
+
+    # print(frmPayloadB64)
+    # print(frmPayloadHex)
+    # print(data.get('uplink_message').get('frm_payload', {}))
 
   # Enregistrement dans la collection MongoDB
   result = collection.insert_one(data)
