@@ -28,7 +28,7 @@ def on_message(client, userdata, msg):
   hauteur = data.get('uplink_message').get('decoded_payload', {}).get('haut')
   if type(hauteur) in [int, str]:
     hauteur = float(hauteur)
-    if deviceId == 'bridge-chaumont' and hauteur > 5:
+    if deviceId == 'bridge-chaumont' and hauteur > 2:
       sendEmail()
 
 
