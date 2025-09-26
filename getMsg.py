@@ -42,7 +42,7 @@ def on_message(client, userdata, msg):
 # Création d'un client MQTT
 mqttc = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
 # Configuration du nom d'utilisateur et du mot de passe
-mqttc.username_pw_set(os.getenv('MQTT_USER'), os.getenv('MQTT_PASSWORD'))
+# mqttc.username_pw_set(os.getenv('MQTT_USER'), os.getenv('MQTT_PASSWORD'))
 mqttc.on_connect = on_connect
 mqttc.on_message = on_message
 

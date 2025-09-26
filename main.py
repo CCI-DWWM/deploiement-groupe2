@@ -28,3 +28,4 @@ def read_root(request: Request):
     name="index.html",
     context={ "mesures": mesures }
   )
+getMsg
