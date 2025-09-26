@@ -1,52 +1,57 @@
-# Python : gestion d'objets IoT
+# Développement et mise à disposition d'application IoT avec dashboard
 
-Vous voulez mettre à disposition une application présentant les mesures de capteurs IoT installés sur le Loire
-En tant que prestataire, votre mission est de comprendre le besoin de l'entreprise et de mettre en place les fonctionnalités demandées.
+Vous voulez mettre en place les éléments permettant de suivre des mesures de capteur IoT sur le terrain
+
+![MongoDB](https://img.shields.io/badge/-MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+![Algorithmique](https://img.shields.io/badge/-Algorithmique-blue?style=for-the-badge)
+![Git](https://img.shields.io/badge/-Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 
 ## Ressources
 
-- [Communauté TTN](https://www.thethingsnetwork.org/community)
-- [wiki MQTT](https://fr.wikipedia.org/wiki/MQTT)
-- [wiki LoRaWAN](https://fr.wikipedia.org/wiki/LoRaWAN)
-- [lib python paho-mqtt](https://pypi.org/project/paho-mqtt/)
-- [MQTT explorer](https://mqtt-explorer.com/)
+- [Render.com](https://render.com/docs/deploys)
+- [Services Azure](https://azure.microsoft.com/fr-fr)
+- Créer et déployer une application de machine virtuelle](https://learn.microsoft.com/fr-fr/azure/virtual-machines/vm-applications-how-to?tabs=TAR%2Ccli1%2Ccli2%2Crest3%2Crest4)
 - [MongoDB](https://www.mongodb.com/)
-- [MongoDb on windows install](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-windows/)
-- [GUI Compass](https://www.mongodb.com/fr-fr/products/tools/compass)
+- [Documentation Docker](https://docs.docker.com/)
+- [protocole SMTP (email)](https://fr.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol)
+- [tuto "Progressive Web Apps (PWA)"](https://laconsole.dev/blog/guide-pwa)
+- [Capteur VS133](https://www.milesight.com/iot/product/lorawan-sensor/vs133)
 
 ## Contexte du projet
 
-Vous êtes chargés de créer une application python qui permette:
-* de récupérer les données des capteurs, de les stocker
-* de présenter ces mesures dans un service web
+Le client (CCI, VDLN, ville) veux avoir accès aux données des capteurs
 
 ## Modalités pédagogiques
 
+Travail par groupe (3)
+
 ### Objectifs :
 
-* Utilisation de MQTT pour récupérer les informations
-* Utilisation de mongo pour stocker les informations
-* Présentation des informations (de la BDD) dans un service web
+* mettre en place les éléments permettant de récupérer les mesures des capteurs
+* déployer automatiquement
+* inclure une application PWA (si déjà fait)
+* utilisation de git avec des branches au sein d'un groupe
+* envoi d'email d'alerte
+* prendre en compte les capteurs MILESIGHT VS133
 
 ### Étapes :
 
-1. Créer un projet github (https://github.com/orgs/CCI-DWWM)
-2. Utilisation de librairie paho-mqtt (connection MQTT) pour récupérer les messages des capteurs
-3. Installation de mongo DB localement (si possible) et utilisation pour stocker les messages
-4. Création d'appli web pour afficher les messages
+1. projet github (reprise du précédent possible)
+2. Inclure les sources python (MQTT, MongoDB, SMTP)
+3. Configurer l'environnement (.env, à ne pas inclure dans github)
+4. Tester la configuration
+5. Création du Dockerfile et tester en local si possible
+6. Déploiement sur Render ou Azure
 
 ## Modalités d'évaluation
 
-Construction d'une application web fonctionnelle
+Construction de services permettant d'extraire les données, et de les afficher
 
 ## Livrables
-Lien vers le code source sur GitHub avec README.md documenté
+- Lien GitHub
+- URL application sur le cloud
 
 ## Critères de performance
-- Le site est fonctionnel
-- L’affichage est lisible 
-- Les données sont stockées en BDD mongoDB
-- traitement des erreurs
-- utilisation de dotenv
-- respect TOP10 OWASP
-- respect des règles RGPD
+- Application fonctionnelle et accessible sur internet
+- Données stockées dans Mongo
+- Appli PWA disponible
